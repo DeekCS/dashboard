@@ -24,3 +24,14 @@ toggle.addEventListener("click", () => {
 // Apply saved theme on load
 const savedTheme = localStorage.getItem("theme") || "dark";
 setTheme(savedTheme);
+
+const datatable = new DataTable("#exTable", {
+  perPage: 15,
+  perPageSelect: [5, 10, 15, 30, 100],
+  labels: {
+    placeholder: "🔍 ابحث...",
+    perPage: "{select}",
+    noRows: "لا توجد سجلات",
+    info: "{rows} سجل",
+  },
+});

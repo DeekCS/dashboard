@@ -6,13 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>الموظفين</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Simple-DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" />
-
-    <!-- Simple-DataTables JS -->
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" defer></script>
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <script src="assets/js/tailwind.js"></script>
 
 </head>
 
@@ -58,16 +53,32 @@
                 </span>
             </a>
 
-            <a href="devices.html" class="flex items-center gap-2 hover:text-blue-400">
-                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9.75 17h4.5M4 6h16v10H4V6z" />
-                </svg>
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                    الأجهزة
-                </span>
-            </a>
+            <details class="group w-full">
+                <summary class="flex items-center gap-5 hover:text-blue-400 cursor-pointer list-none">
+                    <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9.75 17h4.5M4 6h16v10H4V6z" />
+                    </svg>
+                    <span
+                        class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">الأجهزة</span>
+                    <svg class="w-4 h-4 ml-auto transition-transform duration-300 group-open:rotate-180" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </summary>
+
+                <div class=" flex flex-col pl-14 mt-2 space-y-3 gap-3 text-sm text-white">
+                    <a href="devices.html"
+                        class=" pr-6 text-gray-950 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap ">📦
+                        الأجهزة المسلمة</a>
+                    <a href="devicesType.html"
+                        class=" pr-6 text-gray-950 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap ">
+
+                        🧾
+                        أنواع الأجهزة</a>
+                </div>
+            </details>
 
             <a href="announcments.html" class="flex items-center gap-2 hover:text-blue-400">
                 <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
@@ -156,89 +167,106 @@
         </div>
 
         <!-- جدول الموظفين -->
-        <div class="bg-gray-100 dark:bg-gray-950 rounded-2xl shadow p-4 overflow-auto">
-            <table id="employeesTable" class="min-w-full text-sm text-right">
-                <thead class="bg-gray-300 dark:bg-gray-800 text-gray-950 dark:text-gray-100">
-                    <tr>
-                        <th class="py-3 px-4">الاسم الأول</th>
-                        <th class="py-3 px-4">اسم العائلة</th>
-                        <th class="py-3 px-4">البريد الإلكتروني</th>
-                        <th class="py-3 px-4">رقم الهاتف</th>
-                        <th class="py-3 px-4">تاريخ الميلاد</th>
-                        <th class="py-3 px-4">تاريخ التوظيف</th>
-                        <th class="py-3 px-4">الوظيفة</th>
-                        <th class="py-3 px-4">الراتب</th>
-                        <th class="py-3 px-4">الإجراءات</th>
+        <div class="bg-gray-100 dark:bg-gray-950 rounded-2xl shadow p-4">
+            <div class="overflow-auto">
+                <table id="exTable" class="min-w-full rounded-md text-sm text-right mt-5">
+                    <thead class="bg-gray-300 dark:bg-gray-800 ">
+                        <tr class="text-gray-950 dark:text-gray-100">
+                            <th class="py-3 px-4 whitespace-nowrap">الاسم الأول</th>
+                            <th class="py-3 px-4 whitespace-nowrap">اسم العائلة</th>
+                            <th class="py-3 px-4 whitespace-nowrap">البريد الإلكتروني</th>
+                            <th class="py-3 px-4 whitespace-nowrap">رقم الهاتف</th>
+                            <th class="py-3 px-4 whitespace-nowrap">تاريخ الميلاد</th>
+                            <th class="py-3 px-4 whitespace-nowrap">تاريخ التوظيف</th>
+                            <th class="py-3 px-4 whitespace-nowrap">الوظيفة</th>
+                            <th class="py-3 px-4 whitespace-nowrap">الراتب</th>
+                            <th class="py-3 px-4 whitespace-nowrap">الإجراءات</th>
 
-                    </tr>
-                </thead>
-                <tbody class="text-gray-950 dark:text-gray-100">
+                        </tr>
+                        <tr class="text-center  text-gray-950">
+                            <th class="py-1 px-4"><input onkeyup="filterTable(0, this.value)"
+                                    placeholder="فلتر الاسم الأول" class="w-40 rounded p-1 text-sm" /></th>
+                            <th class="py-1 px-4"><input onkeyup="filterTable(1, this.value)"
+                                    placeholder="فلتر اسم العائلة" class="w-40 rounded p-1 text-sm" /></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th class="py-1 px-4"><input onkeyup="filterTable(5, this.value)"
+                                    placeholder="فلتر تاريخ التوظيف" class="w-40 rounded p-1 text-sm" /></th>
+                            <th class="py-1 px-4"><input onkeyup="filterTable(6, this.value)" placeholder="فلتر الوظيفة"
+                                    class="w-40 rounded p-1 text-sm" /></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
 
-                    <tr
-                        class="border-b border-gray-300 dark:border-gray-800 hover:bg-gray-600 dark:hover:bg-gray-600 hover:text-gray-100">
-                        <td class="py-2 px-4 font-medium">John</td>
-                        <td class="py-2 px-4">Doe</td>
-                        <td class="py-2 px-4">john@test.com</td>
-                        <td class="py-2 px-4">0777777777</td>
-                        <td class="py-2 px-4">March 29, 2025</td>
-                        <td class="py-2 px-4">March 29, 2025</td>
-                        <td class="py-2 px-4">Dev</td>
-                        <td class="py-2 px-4">1000.00</td>
-                        <td class="py-2 px-4 flex gap-2">
-                            <button class="text-blue-500 hover:text-blue-700" title="تعديل"
-                                onclick="openEditModal('John', 'Doe', 'john@test.com', '0777777777', '2025-03-29', '2025-03-29', 'Dev', '1000.00')">
-                                <!-- Icon: Pencil -->
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
-                                </svg>
-                            </button>
+                    </thead>
+                    <tbody
+                        class="text-gray-950 text-center dark:text-gray-100 [&>tr:nth-child(odd)]:bg-gray-50 [&>tr:nth-child(even)]:bg-gray-200 dark:[&>tr:nth-child(odd)]:bg-gray-950 dark:[&>tr:nth-child(even)]:bg-gray-600">
 
-                            <button onclick="openDeleteModal('John')" class="text-red-500 hover:text-red-700"
-                                title="حذف">
-                                <!-- Icon: Trash -->
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
-                                </svg>
-                            </button>
-                        </td>
+                        <tr class="border-b border-gray-300 dark:border-gray-800 ">
+                            <td class="py-2 px-4 font-medium">John</td>
+                            <td class="py-2 px-4">Doe</td>
+                            <td class="py-2 px-4">john@test.com</td>
+                            <td class="py-2 px-4">0777777777</td>
+                            <td class="py-2 px-4">March 29, 2025</td>
+                            <td class="py-2 px-4">March 29, 2025</td>
+                            <td class="py-2 px-4">Dev</td>
+                            <td class="py-2 px-4">1000.00</td>
+                            <td class="py-2 px-4 flex gap-2">
+                                <button class="text-blue-500 hover:text-blue-700" title="تعديل"
+                                    onclick="openEditModal('John', 'Doe', 'john@test.com', '0777777777', '2025-03-29', '2025-03-29', 'Dev', '1000.00')">
+                                    <!-- Icon: Pencil -->
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
+                                    </svg>
+                                </button>
 
-                    </tr>
-                    <tr
-                        class="border-b border-gray-300 dark:border-gray-800 hover:bg-gray-600 dark:hover:bg-gray-600 hover:text-gray-100">
-                        <td class="py-2 px-4 font-medium">willian</td>
-                        <td class="py-2 px-4">Doe</td>
-                        <td class="py-2 px-4">willian@test.com</td>
-                        <td class="py-2 px-4">0777777777</td>
-                        <td class="py-2 px-4">March 15, 2025</td>
-                        <td class="py-2 px-4">March 10, 2025</td>
-                        <td class="py-2 px-4">tester</td>
-                        <td class="py-2 px-4">1000.00</td>
-                        <td class="py-2 px-4 flex gap-2">
-                            <button class="text-blue-500 hover:text-blue-700" title="تعديل"
-                                onclick="openEditModal('John', 'Doe', 'john@test.com', '0777777777', '2025-03-29', '2025-03-29', 'Dev', '1000.00')">
-                                <!-- Icon: Pencil -->
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
-                                </svg>
-                            </button>
+                                <button onclick="openDeleteModal('John')" class="text-red-500 hover:text-red-700"
+                                    title="حذف">
+                                    <!-- Icon: Trash -->
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
+                                    </svg>
+                                </button>
+                            </td>
 
-                            <button onclick="openDeleteModal('willian')" class="text-red-500 hover:text-red-700"
-                                title="حذف">
-                                <!-- Icon: Trash -->
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
-                                </svg>
-                            </button>
-                        </td>
+                        </tr>
+                        <tr class="border-b border-gray-300 dark:border-gray-800 ">
+                            <td class="py-2 px-4 font-medium">willian</td>
+                            <td class="py-2 px-4">Doe</td>
+                            <td class="py-2 px-4">willian@test.com</td>
+                            <td class="py-2 px-4">0777777777</td>
+                            <td class="py-2 px-4">March 15, 2025</td>
+                            <td class="py-2 px-4">March 10, 2025</td>
+                            <td class="py-2 px-4">tester</td>
+                            <td class="py-2 px-4">1000.00</td>
+                            <td class="py-2 px-4 flex gap-2">
+                                <button class="text-blue-500 hover:text-blue-700" title="تعديل"
+                                    onclick="openEditModal('John', 'Doe', 'john@test.com', '0777777777', '2025-03-29', '2025-03-29', 'Dev', '1000.00')">
+                                    <!-- Icon: Pencil -->
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
+                                    </svg>
+                                </button>
 
-                    </tr>
+                                <button onclick="openDeleteModal('willian')" class="text-red-500 hover:text-red-700"
+                                    title="حذف">
+                                    <!-- Icon: Trash -->
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
+                                    </svg>
+                                </button>
+                            </td>
 
-                </tbody>
-            </table>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 
@@ -395,6 +423,7 @@
 
 
     </div>
+    <script src="assets/js/table.js"></script>
 
     <script src="assets/js/template.js"></script>
     <script src="assets/js/theme.js"></script>
@@ -484,23 +513,9 @@
             closeAddModal();
         }
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const table = document.querySelector("#employeesTable");
-            if (table) {
-                new simpleDatatables.DataTable(table, {
-                    searchable: true,
-                    fixedHeight: true,
-                    perPage: false,
-                    labels: {
-                        placeholder: "🔍 بحث...",
-                        noRows: "لا توجد سجلات مطابقة",
-                        info: "عرض {start} إلى {end} من أصل {rows} سجل"
-                    }
-                });
-            }
-        });
-    </script>
+
+
+
 
 
 </body>

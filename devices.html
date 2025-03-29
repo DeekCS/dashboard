@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> الاجهزة </title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="assets/css/tables.css" rel="stylesheet">
     <script src="assets/js/tailwind.js"></script>
 </head>
 
@@ -51,16 +53,35 @@
                 </span>
             </a>
 
-            <a href="devices.html" class="flex items-center gap-2 text-white bg-blue-600 rounded-xl p-2">
-                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-blue-500 rounded-full p-2" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9.75 17h4.5M4 6h16v10H4V6z" />
-                </svg>
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                    الأجهزة
-                </span>
-            </a>
+            <details class="group w-full">
+                <summary class="flex items-center gap-2 text-white bg-blue-600 rounded-xl p-2 cursor-pointer list-none">
+                    <svg class="w-10 h-10 text-gray-200 shrink-0 bg-blue-500 rounded-full p-2" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9.75 17h4.5M4 6h16v10H4V6z" />
+                    </svg>
+                    <span
+                        class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">الأجهزة</span>
+                    <svg class="w-4 h-4 ml-auto transition-transform duration-300 group-open:rotate-180" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </summary>
+
+                <div class=" flex flex-col pl-14 mt-2 space-y-3 gap-3 text-sm text-white">
+                    <a href="devices.html"
+                        class=" px-4 py-2  text-gray-100 dark:text-gray-100 bg-blue-600 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap ">
+                        >>
+                        📦
+                        الأجهزة المسلمة</a>
+                    <a href="devicesType.html"
+                        class=" pr-6 text-gray-950 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap ">
+
+                        🧾
+                        أنواع الأجهزة</a>
+                </div>
+            </details>
+
 
             <a href="announcments.html" class="flex items-center gap-2 hover:text-blue-400">
                 <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
@@ -73,7 +94,7 @@
                 </span>
             </a>
 
-            <a href="Dashboard.html" class="flex items-center gap-2  hover:text-blue-400">
+            <a href="invoices.html" class="flex items-center gap-2  hover:text-blue-400">
                 <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
                     stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -136,6 +157,14 @@
                 </div>
             </div>
         </header>
+        <div class="mb-6">
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <a href="Dashboard.html" class="text-blue-500 hover:text-blue-600">الرئيسية</a>
+                <span class="text-gray-500">/</span>
+                <span class="text-gray-700 dark:text-gray-300"> الاجهزة </span>
+            </div>
+        </div>
+
 
 
         <div class="flex justify-between items-center mb-4">
@@ -147,110 +176,96 @@
 
         </div>
 
-      
-        <div class="bg-gray-100 dark:bg-gray-950 rounded-2xl shadow p-4 overflow-auto">
-            <table class="min-w-full text-sm text-right">
-                <thead class="bg-gray-300 dark:bg-gray-800 text-gray-950 dark:text-gray-100">
-                    <tr>
-                        <th class="py-3 px-4">📱 اسم الجهاز</th>
-                        <th class="py-3 px-4">🔢 الرقم التسلسلي</th>
-                        <th class="py-3 px-4">👤 الموظف المستلم</th>
-                        <th class="py-3 px-4">📅 تاريخ الاستلام</th>
-                        <th class="py-3 px-4">الإجراءات</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-300">
+        <div class="bg-gray-100 dark:bg-gray-950 rounded-2xl shadow-xl p-4">
+            <div class="overflow-x-auto">
+                <table id="exTable" class="min-w-full  text-sm text-center">
+                    <thead class="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white text-center">
+                        <tr class="text-gray-900 dark:text-white">
+                            <th class="py-3 px-4 whitespace-nowrap">نوع الجهاز</th>
+                            <th class="py-3 px-4 whitespace-nowrap">الماركة</th>
+                            <th class="py-3 px-4 whitespace-nowrap ">الموديل</th>
+                            <th class="py-3 px-4 whitespace-nowrap ">الرقم التسلسلي</th>
+                            <th class="py-3 px-4 whitespace-nowrap">الموظف</th>
+                            <th class="py-3 px-4 whitespace-nowrap ">تاريخ التسليم</th>
+                            <th class="py-3 px-4 whitespace-nowrap ">تاريخ الإرجاع</th>
+                            <th class="py-3 px-4 whitespace-nowrap">الإجراءات</th>
+                        </tr>
+                        <tr class="text-gray-900">
+                            <th class="py-1 px-4">
+                                <input onkeyup="filterTable(0, this.value)" placeholder="فلتر نوع الجهاز"
+                                    class="w-40 rounded p-1 text-sm" />
+                            </th>
+                            <th class="py-1 px-4">
+                                <input onkeyup="filterTable(1, this.value)" placeholder="فلتر الماركة"
+                                    class="w-40 rounded p-1 text-sm" />
+                            </th>
+                            <th class="py-1 px-4">
+                                <input onkeyup="filterTable(2, this.value)" placeholder="فلتر الموديل"
+                                    class="w-40 rounded p-1 text-sm" />
+                            </th>
+                            <th class="py-1 px-4">
+                                <input onkeyup="filterTable(3, this.value)" placeholder="فلتر الرقم التسلسلي"
+                                    class="w-40 rounded p-1 text-sm" />
+                            </th>
+                            <th class="py-1 px-4">
+                                <input onkeyup="filterTable(4, this.value)" placeholder="فلتر الموظف"
+                                    class="w-40 rounded p-1 text-sm" />
+                            </th>
+                            <th class="py-1 px-4">
+                                <input onkeyup="filterTable(5, this.value)" placeholder="تاريخ التسليم"
+                                    class="w-40 rounded p-1 text-sm" />
+                            </th>
+                            <th class="py-1 px-4">
+                                <input onkeyup="filterTable(6, this.value)" placeholder="تاريخ الإرجاع"
+                                    class="w-40 rounded p-1 text-sm" />
+                            </th>
+                            <th></th>
+                        </tr>
 
-                
-                    <tr
-                        class="border-b border-gray-300 dark:border-gray-800 hover:bg-gray-600 dark:hover:bg-gray-600 text-gray-950 transition-all duration-200 dark:text-gray-100 hover:text-gray-100">
+                    </thead>
+                    <tbody class="text-gray-800 dark:text-gray-100 text-center">
+                        <tr
+                            class="border-b border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-150">
+                            <td class="py-2 px-4 font-medium">لابتوب</td>
+                            <td class="py-2 px-4">HP</td>
+                            <td class="py-2 px-4 ">EliteBook</td>
+                            <td class="py-2 px-4 ">SN-123456</td>
+                            <td class="py-2 px-4">أحمد الشمري</td>
+                            <td class="py-2 px-4 ">2025-03-01</td>
+                            <td class="py-2 px-4 ">2025-04-01</td>
+                            <td class="py-2 px-4 flex gap-2">
+                                <button class="text-blue-500 hover:text-blue-700" title="تعديل"
+                                    onclick="openEditModal('لابتوب', 'HP', 'EliteBook', 'SN-123456', 'أحمد الشمري', '2025-03-01', '2025-04-01')">
+                                    <!-- Icon: Pencil -->
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
+                                    </svg>
+                                </button>
 
-                        <td class="py-2 px-4 font-medium">لابتوب HP EliteBook</td>
-                        <td class="py-2 px-4">SN-123456</td>
-                        <td class="py-2 px-4">أحمد الشمري</td>
-                        <td class="py-2 px-4">2025-03-01</td>
-                        <td class="py-2 px-4 flex gap-2 ">
-                            <button class="text-blue-500 hover:text-blue-700" title="تعديل"
-                                onclick="openEditModal(' لابتوب HP EliteBook', ' SN-123456', 'أحمد الشمري' ,'2025-03-01')">
-                               
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
-                                </svg>
-                            </button>
-
-                            <button onclick="openModal(' لابتوب HP EliteBook ')" class="text-red-500 hover:text-red-700"
-                                title="حذف">
-                              
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-
-                   
-                    <tr
-                        class="border-b border-gray-300 dark:border-gray-800 hover:bg-gray-600 dark:hover:bg-gray-600 text-gray-950 transition-all duration-200 dark:text-gray-100 hover:text-gray-100">
-                        >
-                        <td class="py-2 px-4 font-medium">iPhone 13</td>
-                        <td class="py-2 px-4">SN-987654</td>
-                        <td class="py-2 px-4">سارة العتيبي</td>
-                        <td class="py-2 px-4">2025-03-15</td>
-
-                        <td class="py-2 px-4 flex gap-2 ">
-                            <button class="text-blue-500 hover:text-blue-700" title="تعديل"
-                                onclick="openEditModal('سارة العتيبي', 'الموارد البشرية', ['لابتوب HP', 'iPhone 13'])">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
-                                </svg>
-                            </button>
-                            <button onclick="openModal('iPhone 13')" class="text-red-500 hover:text-red-700"
-                                title="حذف">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-
-                    <!-- موظف بدون أجهزة -->
-                    <tr
-                        class="border-b border-gray-300 dark:border-gray-800 hover:bg-gray-600 dark:hover:bg-gray-600 text-gray-950 transition-all duration-200 dark:text-gray-100 hover:text-gray-100">
-                        > <td class="py-2 px-4 font-medium">شاشة Dell 24"</td>
-                        <td class="py-2 px-4">SN-001122</td>
-                        <td class="py-2 px-4">محمد الزهراني</td>
-                        <td class="py-2 px-4">2025-03-22</td>
-
-                        <td class="py-2 px-4 flex gap-2 ">
-                            <button class="text-blue-500 hover:text-blue-700" title="تعديل">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
-                                </svg>
-                            </button>
-                            <button onclick="openModal('شاشة Dell 24inch')" class="text-red-500 hover:text-red-700"
-                                title="حذف">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
+                                <button onclick="openDeleteModal('لابتوب')" class="text-red-500 hover:text-red-700"
+                                    title="حذف">
+                                    <!-- Icon: Trash -->
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+
 
         <!-- Modal تأكيد الحذف -->
         <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
             <div class="bg-gray-100 dark:bg-gray-600 p-6 rounded-xl shadow-lg max-w-sm w-full text-center space-y-4">
                 <h3 class="text-lg font-bold text-red-500">تأكيد الحذف</h3>
-                <p class="text-gray-950 dark:text-gray-100">هل أنت متأكد من حذف <span id="employeeName"  class="font-bold text-gray-800 dark:text-red-500"></span>؟</p>
+                <p class="text-gray-950 dark:text-gray-100">هل أنت متأكد من حذف <span id="employeeName"
+                        class="font-bold text-gray-800 dark:text-red-500"></span>؟</p>
                 <div class="flex justify-center gap-4 mt-4">
                     <button onclick="closeModal()"
                         class="px-4 py-2 bg-gray-800 text-gray-100 hover:bg-gray-500 rounded-lg text-sm">إلغاء</button>
@@ -262,31 +277,47 @@
 
         <!-- تعديل بيانات الجهاز -->
         <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-            <div class="bg-gray-100 dark:bg-gray-600 p-6 rounded-xl shadow-lg w-full max-w-lg space-y-4 text-right">
-
+            <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-xl w-full max-w-2xl text-right space-y-4">
                 <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-300">✏️ تعديل بيانات الجهاز</h3>
 
                 <form onsubmit="event.preventDefault(); submitEditForm();">
                     <div class="space-y-3">
+
                         <div>
-                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">اسم الجهاز</label>
-                            <input id="editName" type="text" class="w-full p-2 text-gray-800  border rounded-lg" />
+                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">نوع الجهاز</label>
+                            <input id="editDeviceType" type="text" class="w-full p-2 text-gray-800 border rounded-lg" />
                         </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">الشركة المصنعة</label>
+                            <input id="editBrand" type="text" class="w-full p-2 text-gray-800 border rounded-lg" />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">الموديل</label>
+                            <input id="editModel" type="text" class="w-full p-2 text-gray-800 border rounded-lg" />
+                        </div>
+
                         <div>
                             <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">الرقم التسلسلي</label>
-                            <input id="editsn" type="text" class="w-full p-2  text-gray-800 border rounded-lg" />
+                            <input id="editSN" type="text" class="w-full p-2 text-gray-800 border rounded-lg" />
                         </div>
+
                         <div>
                             <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">الموظف المستلم</label>
-                            <input id="editEmp" type="text" class="w-full p-2 text-gray-800  border rounded-lg" />
+                            <input id="editEmployee" type="text" class="w-full p-2 text-gray-800 border rounded-lg" />
                         </div>
+
                         <div>
                             <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">تاريخ الاستلام</label>
-                            <input id="editdate" type="date" class="w-full p-2 text-gray-800  border rounded-lg" />
+                            <input id="editReceiveDate" type="date"
+                                class="w-full p-2 text-gray-800 border rounded-lg" />
                         </div>
 
-
-
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">تاريخ الإرجاع</label>
+                            <input id="editReturnDate" type="date" class="w-full p-2 text-gray-800 border rounded-lg" />
+                        </div>
 
                     </div>
 
@@ -299,30 +330,59 @@
                 </form>
             </div>
         </div>
-        <!-- اضافة موظف جديد  -->
-        <div id="addModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-            <div class="bg-gray-100 dark:bg-gray-600 p-6 rounded-xl shadow-lg w-full max-w-lg space-y-4 text-right">
 
-                <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-300">➕ إضافة جهاز جديد</h3>
+        <!-- اضافة device جديد  -->
+        <div id="addDeviceModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-xl w-full max-w-2xl text-right space-y-4">
+                <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-300">➕ إضافة جهاز</h3>
 
-                <form onsubmit="event.preventDefault(); submitAddForm();">
-                    <div class="space-y-3">
+                <form onsubmit="event.preventDefault(); submitDeviceForm();">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
                         <div>
-                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">الاسم</label>
-                            <input id="addName" type="text" class="w-full p-2 text-gray-800 border rounded-lg"
-                                required />
+                            <label class="block text-sm text-gray-700 dark:text-gray-100 mb-1">الموظف</label>
+                            <select id="deviceEmployee" class="w-full p-2 text-gray-800 border rounded-lg" required>
+                                <option value="">------</option>
+                                <option value="1">John Doe</option>
+                                <option value="2">أحمد الشمري</option>
+                                <option value="3">سارة العتيبي</option>
+                            </select>
                         </div>
+
                         <div>
-                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">القسم</label>
-                            <input id="addDepartment" type="text" class="w-full text-gray-800 p-2 border rounded-lg"
-                                required />
+                            <label class="block text-sm text-gray-700 dark:text-gray-100 mb-1">نوع الجهاز *</label>
+                            <select id="deviceType" required class="w-full p-2 text-gray-800 border rounded-lg">
+                                <option>------</option>
+                            </select>
                         </div>
 
                         <div>
-                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">📱 أجهزة الموظف
-                                (اختياري)</label>
-                            <input id="addDevices" type="text" placeholder="افصل بين الأجهزة بفاصلة"
+                            <label class="block text-sm text-gray-700 dark:text-gray-100 mb-1">الماركة *</label>
+                            <input type="text" id="deviceBrand" required
                                 class="w-full p-2 text-gray-800 border rounded-lg" />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-700 dark:text-gray-100 mb-1">الموديل *</label>
+                            <input type="text" id="deviceModel" required
+                                class="w-full p-2 text-gray-800 border rounded-lg" />
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-sm text-gray-700 dark:text-gray-100 mb-1">الرقم التسلسلي *</label>
+                            <input type="text" id="deviceSerial" required
+                                class="w-full p-2 text-gray-800 border rounded-lg" />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-700 dark:text-gray-100 mb-1">تاريخ التسليم</label>
+                            <input type="date" id="deliveryDate" class="w-full p-2 text-gray-800 border rounded-lg"
+                                required />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-700 dark:text-gray-100 mb-1">تاريخ الإرجاع</label>
+                            <input type="date" id="returnDate" class="w-full p-2 text-gray-800 border rounded-lg" />
                         </div>
                     </div>
 
@@ -330,18 +390,23 @@
                         <button type="button" onclick="closeAddModal()"
                             class="px-4 py-2 bg-gray-800 text-gray-100 hover:bg-gray-500 rounded-lg text-sm">إلغاء</button>
                         <button type="submit"
-                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm">حفظ</button>
+                            class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm">💾
+                            حفظ</button>
                     </div>
                 </form>
             </div>
         </div>
 
+
     </div>
+    <script src="assets/js/table.js"></script>
 
     <script src="assets/js/template.js"></script>
     <script src="assets/js/theme.js"></script>
+
+
     <script>
-        function openModal(name) {
+        function openDeleteModal(name) {
             document.getElementById('employeeName').innerText = name;
             document.getElementById('deleteModal').classList.remove('hidden');
             document.getElementById('deleteModal').classList.add('flex');
@@ -355,50 +420,32 @@
 
 
     <script>
-        let currentEditDevices = [];
+        function openEditModal(deviceType, brand, model, sn, employee, receiveDate, returnDate) {
+            document.getElementById('editDeviceType').value = deviceType;
+            document.getElementById('editBrand').value = brand;
+            document.getElementById('editModel').value = model;
+            document.getElementById('editSN').value = sn;
+            document.getElementById('editEmployee').value = employee;
+            document.getElementById('editReceiveDate').value = receiveDate;
+            document.getElementById('editReturnDate').value = returnDate;
+            document.getElementById('editModal').classList.remove('hidden');
+            document.getElementById('editModal').classList.add('flex');
 
-        function openEditModal(name, SNn, emp, date) {
-            document.getElementById('editName').value = name;
-            document.getElementById('editsn').value = SNn;
-            document.getElementById('editEmp').value = emp;
-            document.getElementById('editdate').value = date;
-
-
-            const modal = document.getElementById('editModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
         }
-
         function closeEditModal() {
-            const modal = document.getElementById('editModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-
-
-
-
-
-        function submitEditForm() {
-            const name = document.getElementById('editName').value;
-            const department = document.getElementById('editDepartment').value;
-
-            // 👇 هنا ممكن ترسل البيانات إلى API أو تطبعها
-            console.log("✅ تم التعديل:", name, department, currentEditDevices);
-
-            closeEditModal();
+            document.getElementById('editModal').classList.add('hidden');
+            document.getElementById('editModal').classList.remove('flex');
         }
     </script>
     <script>
         function openAddModal() {
-            document.getElementById('addModal').classList.remove('hidden');
-            document.getElementById('addModal').classList.add('flex');
+            document.getElementById('addDeviceModal').classList.remove('hidden');
+            document.getElementById('addDeviceModal').classList.add('flex');
         }
 
         function closeAddModal() {
-            document.getElementById('addModal').classList.add('hidden');
-            document.getElementById('addModal').classList.remove('flex');
+            document.getElementById('addDeviceModal').classList.add('hidden');
+            document.getElementById('addDeviceModal').classList.remove('flex');
         }
 
         function submitAddForm() {
@@ -420,6 +467,11 @@
             closeAddModal();
         }
     </script>
+    <script>
+
+
+    </script>
+
 
 
 </body>

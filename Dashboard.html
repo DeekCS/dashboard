@@ -7,10 +7,14 @@
     <title>لوحة التحكم</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="assets/js/tailwind.js"></script>
-
     <style>
         body {
-            transition: background-color 1s, color 0.3s;
+            transition: opacity 0.4s ease;
+            opacity: 1;
+        }
+
+        body.fade-out {
+            opacity: 0;
         }
     </style>
 </head>
@@ -57,16 +61,32 @@
                 </span>
             </a>
 
-            <a href="devices.html" class="flex items-center gap-2 hover:text-blue-400">
-                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9.75 17h4.5M4 6h16v10H4V6z" />
-                </svg>
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                    الأجهزة
-                </span>
-            </a>
+            <details class="group w-full">
+                <summary class="flex items-center gap-5 hover:text-blue-400 cursor-pointer list-none">
+                    <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9.75 17h4.5M4 6h16v10H4V6z" />
+                    </svg>
+                    <span
+                        class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">الأجهزة</span>
+                    <svg class="w-4 h-4 ml-auto transition-transform duration-300 group-open:rotate-180" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </summary>
+
+                <div class=" flex flex-col pl-14 mt-2 space-y-3 gap-3 text-sm text-white">
+                    <a href="devices.html"
+                        class=" pr-6 text-gray-950 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap ">📦
+                        الأجهزة المسلمة</a>
+                    <a href="devicesType.html"
+                        class=" pr-6 text-gray-950 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap ">
+
+                        🧾
+                        أنواع الأجهزة</a>
+                </div>
+            </details>
 
             <a href="announcments.html" class="flex items-center gap-2 hover:text-blue-400">
                 <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
@@ -210,27 +230,32 @@
 
             <div class="bg-white dark:bg-gray-950 rounded-2xl shadow p-4">
                 <h2 class="text-xl font-semibold mb-4">🧾 آخر الفواتير</h2>
-                <table class="w-full text-sm text-right text-gray-950 dark:text-gray-100">
-                    <thead>
-                        <tr class="text-gray-950 dark:text-gray-100 border-b border-gray-600">
+                <table class="w-full text-sm text-center text-gray-950 dark:text-gray-100 border border-gray-800">
+                    <thead class="bg-gray-300 dark:bg-gray-800 ">
+                        <tr class="text-gray-950 dark:text-gray-100">
                             <th class="py-2">رقم الفاتورة</th>
-                            <th class="py-2">التاريخ</th>
-                            <th class="py-2">القيمة</th>
-                            <th class="py-2">الحالة</th>
+                            <th class="py-2">الموظف</th>
+                            <th class="py-2">المبلغ</th>
+                            <th class="py-2">تاريخ الاستحقاق</th>
+                            <th class="py-2"> الحالة </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody
+                        class="text-gray-950 text-center dark:text-gray-100 [&>tr:nth-child(odd)]:bg-gray-50 [&>tr:nth-child(even)]:bg-gray-200 dark:[&>tr:nth-child(odd)]:bg-gray-950 dark:[&>tr:nth-child(even)]:bg-gray-600">
+
                         <tr class="border-b border-gray-800 ">
                             <td class="py-2">#123</td>
-                            <td class="py-2">2025-03-20</td>
+                            <td class="py-2"> عبد الرحيم سليمان </td>
                             <td class="py-2">150 د.أ</td>
-                            <td class="py-2 text-green-600 dark:text-green-400">مدفوعة</td>
+                            <td class="py-2">2025-03-20</td>
+                            <td class="py-2 text-red-600 dark:text-red-400">غير مدفوعة</td>
                         </tr>
                         <tr class="border-b border-gray-800">
                             <td class="py-2">#124</td>
-                            <td class="py-2">2025-03-21</td>
+                            <td class="py-2">عبد الكريم</td>
                             <td class="py-2">220 د.أ</td>
-                            <td class="py-2 text-red-600 dark:text-red-400">غير مدفوعة</td>
+                            <td class="py-2">2025-03-20</td>
+                            <td class="py-2 text-green-600 dark:text-green-400">مدفوعة</td>
                         </tr>
                     </tbody>
                 </table>
@@ -240,6 +265,7 @@
 
     <script src="assets/js/template.js"></script>
     <script src="assets/js/theme.js"></script>
+
 </body>
 
 </html>

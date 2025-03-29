@@ -1,639 +1,367 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>تنبيهات الموظفين | شركة skybyte</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      .error-message {
-        color: #ef4444;
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
-        display: none;
-      }
-      .input-error {
-        border-color: #ef4444 !important;
-      }
-      .alert-success {
-        background-color: #4ade80;
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .alert-success .close-btn {
-        margin-left: auto;
-        cursor: pointer;
-      }
-    </style>
-  </head>
 
-  <body
-    class="bg-gradient-to-br from-gray-300 to-gray-200 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white font-[Tajawal] min-h-screen"
-  >
-    <!-- Overlay -->
-    <div
-      id="overlay"
-      class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 lg:hidden"
-    ></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تنبيهات الموظفين | شركة skybyte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="assets/css/tables.css" rel="stylesheet">
+  <script src="assets/js/tailwind.js"></script>
+  <script src="assets/js/table.js"></script>
 
-    <!-- Sidebar -->
-    <aside
-      id="sidebar"
-      class="group fixed top-4 right-1 h-[95vh] bg-white dark:bg-gray-950 shadow-xl border border-gray-600 p-3 space-y-8 z-50 rounded-3xl transition-all duration-300 overflow-hidden w-[80px] hover:w-60 translate-x-full lg:translate-x-0"
-    >
-      <div class="flex items-center gap-4">
-        <img
-          src="assets/images/logo.svg"
-          alt="شعار النظام"
-          class="w-14 shrink-0 bg-gray-950"
-        />
-        <span
-          class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-gray-950 dark:text-gray-100 font-mono tracking-widest text-lg drop-shadow-[0_0_5px_#7ed957]"
-        >
-          SKYBYTE
+</head>
+
+<body
+  class="bg-gradient-to-br from-gray-300 to-gray-200 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white font-[Tajawal] min-h-screen">
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 lg:hidden"></div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar"
+    class="group fixed top-4 right-1 h-[95vh] bg-white dark:bg-gray-950 shadow-xl border border-gray-600 p-3 space-y-8 z-50 rounded-3xl transition-all duration-300 overflow-hidden w-[80px] hover:w-60 translate-x-full lg:translate-x-0">
+    <div class="flex items-center gap-4">
+      <img src="assets/images/logo.svg" alt="شعار النظام" class="w-14 shrink-0 bg-gray-950" />
+      <span
+        class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-gray-950 dark:text-gray-100 font-mono tracking-widest text-lg drop-shadow-[0_0_5px_#7ed957]">
+        SKYBYTE
+      </span>
+    </div>
+
+    <nav class="space-y-8 text-gray-950 dark:text-gray-100 text-base">
+      <a href="Dashboard.html" class="flex items-center gap-2 hover:text-blue-400">
+        <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 3h7v7H3V3zm0 11h7v7H3v-7zm11-11h7v13h-7V3z" />
+        </svg>
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+          لوحة التحكم
         </span>
+      </a>
+
+      <a href="employee.html" class="flex items-center gap-2 hover:text-blue-400">
+        <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M16 3.13a4 4 0 010 7.75M8 3.13a4 4 0 000 7.75" />
+        </svg>
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+          الموظفين
+        </span>
+      </a>
+
+      <details class="group w-full">
+        <summary class="flex items-center gap-5 hover:text-blue-400 cursor-pointer list-none">
+          <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17h4.5M4 6h16v10H4V6z" />
+          </svg>
+          <span
+            class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">الأجهزة</span>
+          <svg class="w-4 h-4 ml-auto transition-transform duration-300 group-open:rotate-180" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+
+        <div class=" flex flex-col pl-14 mt-2 space-y-3 gap-3 text-sm text-white">
+          <a href="devices.html"
+            class=" pr-6 text-gray-950 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap ">📦
+            الأجهزة المسلمة</a>
+          <a href="devicesType.html"
+            class=" pr-6 text-gray-950 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap ">
+
+            🧾
+            أنواع الأجهزة</a>
+        </div>
+      </details>
+
+      <a href="employee-alerts.html" class="flex items-center gap-2 text-white bg-blue-600 rounded-xl p-2">
+        <svg class="w-10 h-10 text-gray-200 shrink-0 bg-blue-500 rounded-full p-2" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 9v2m0 4h.01M5.07 17H18.93a2 2 0 001.84-2.75L13.84 4.25a2 2 0 00-3.68 0L3.23 14.25A2 2 0 005.07 17z" />
+        </svg>
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+          تنبيهات الموظفين
+        </span>
+      </a>
+
+      <a href="invoices.html" class="flex items-center gap-2 hover:text-blue-400">
+        <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 14h6m2 0a2 2 0 100-4H7a2 2 0 100 4h10zM9 10h6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+          الفواتير
+        </span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="lg:pr-36 p-6">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-950 shadow rounded-2xl mb-6 p-4 flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <!-- Hamburger -->
+        <button id="menu-toggle" class="lg:hidden text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <h1 class="text-2xl font-bold">تنبيهات الموظفين</h1>
       </div>
 
-      <nav class="space-y-8 text-gray-950 dark:text-gray-100 text-base">
-        <a
-          href="Dashboard.html"
-          class="flex items-center gap-2 hover:text-blue-400"
-        >
-          <svg
-            class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 3h7v7H3V3zm0 11h7v7H3v-7zm11-11h7v13h-7V3z"
-            />
-          </svg>
-          <span
-            class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
-          >
-            لوحة التحكم
-          </span>
-        </a>
+      <!-- User Dropdown -->
+      <div class="d-flex flex gap-2">
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input class="sr-only peer" value="" type="checkbox" id="theme-toggle" />
+          <div
+            class="w-14 h-7 rounded-full ring-0 peer duration-500 outline-none bg-gray-200 overflow-hidden before:flex before:items-center before:justify-center after:flex after:items-center after:justify-center before:content-['☀️'] before:absolute before:h-5 before:w-5 before:top-1/2 before:bg-white before:rounded-full before:left-1 before:-translate-y-1/2 before:transition-all before:duration-700 peer-checked:before:opacity-0 peer-checked:before:rotate-90 peer-checked:before:-translate-y-full peer-checked:bg-[#383838] after:content-['🌑'] after:absolute after:bg-[#1d1d1d] after:rounded-full after:top-[8px] after:right-1 after:translate-y-full after:w-5 after:h-5 after:opacity-0 after:transition-all after:duration-700 peer-checked:after:opacity-100 peer-checked:after:rotate-180 peer-checked:after:translate-y-0">
+          </div>
+        </label>
 
-        <a
-          href="employee.html"
-          class="flex items-center gap-2 hover:text-blue-400"
-        >
-          <svg
-            class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M16 3.13a4 4 0 010 7.75M8 3.13a4 4 0 000 7.75"
-            />
-          </svg>
-          <span
-            class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
-          >
-            الموظفين
-          </span>
-        </a>
-
-        <a
-          href="devices.html"
-          class="flex items-center gap-2 hover:text-blue-400"
-        >
-          <svg
-            class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9.75 17h4.5M4 6h16v10H4V6z"
-            />
-          </svg>
-          <span
-            class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
-          >
-            الأجهزة
-          </span>
-        </a>
-
-        <a
-          href="employee-alerts.html"
-          class="flex items-center gap-2 text-white bg-blue-600 rounded-xl p-2"
-        >
-          <svg
-            class="w-10 h-10 text-gray-200 shrink-0 bg-blue-500 rounded-full p-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 9v2m0 4h.01M5.07 17H18.93a2 2 0 001.84-2.75L13.84 4.25a2 2 0 00-3.68 0L3.23 14.25A2 2 0 005.07 17z"
-            />
-          </svg>
-          <span
-            class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
-          >
-            تنبيهات الموظفين
-          </span>
-        </a>
-
-        <a
-          href="invoices.html"
-          class="flex items-center gap-2 hover:text-blue-400"
-        >
-          <svg
-            class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 14h6m2 0a2 2 0 100-4H7a2 2 0 100 4h10zM9 10h6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-            />
-          </svg>
-          <span
-            class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
-          >
-            الفواتير
-          </span>
-        </a>
-      </nav>
-    </aside>
-
-    <!-- Main Content -->
-    <div class="lg:pr-36 p-6">
-      <!-- Header -->
-      <header
-        class="bg-white dark:bg-gray-950 shadow rounded-2xl mb-6 p-4 flex justify-between items-center"
-      >
-        <div class="flex items-center gap-4">
-          <!-- Hamburger -->
-          <button id="menu-toggle" class="lg:hidden text-gray-600">
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+        <div class="relative">
+          <button id="user-menu-btn"
+            class="flex items-center gap-2 text-gray-300 hover:text-blue-400 focus:outline-none">
+            <svg class="w-10 h-10 text-gray-200 bg-gray-700 rounded-full p-2" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
               <path
-                d="M4 6h16M4 12h16M4 18h16"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+                d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.29.533 6.121 1.474M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </button>
-          <h1 class="text-2xl font-bold">تنبيهات الموظفين</h1>
-        </div>
 
-        <!-- User Dropdown -->
-        <div class="d-flex flex gap-2">
-          <label class="relative inline-flex items-center cursor-pointer">
-            <input
-              class="sr-only peer"
-              value=""
-              type="checkbox"
-              id="theme-toggle"
-            />
-            <div
-              class="w-14 h-7 rounded-full ring-0 peer duration-500 outline-none bg-gray-200 overflow-hidden before:flex before:items-center before:justify-center after:flex after:items-center after:justify-center before:content-['☀️'] before:absolute before:h-5 before:w-5 before:top-1/2 before:bg-white before:rounded-full before:left-1 before:-translate-y-1/2 before:transition-all before:duration-700 peer-checked:before:opacity-0 peer-checked:before:rotate-90 peer-checked:before:-translate-y-full peer-checked:bg-[#383838] after:content-['🌑'] after:absolute after:bg-[#1d1d1d] after:rounded-full after:top-[8px] after:right-1 after:translate-y-full after:w-5 after:h-5 after:opacity-0 after:transition-all after:duration-700 peer-checked:after:opacity-100 peer-checked:after:rotate-180 peer-checked:after:translate-y-0"
-            ></div>
+          <div id="user-dropdown"
+            class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-950 rounded-md shadow-lg py-2 text-sm text-gray-800 dark:text-gray-100 hidden z-50 border border-gray-800">
+            <div class="px-4 py-2 pb-8 font-semibold text-center border-b-2 border-gray-800">
+              👤 المسؤول
+            </div>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">⚙️ الإعدادات</a>
+            <a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-50">🚪 تسجيل الخروج</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="mb-6">
+      <div class="flex items-center space-x-2 space-x-reverse">
+        <a href="#" class="text-blue-500 hover:text-blue-600">الرئيسية</a>
+        <span class="text-gray-500">/</span>
+        <span class="text-gray-700 dark:text-gray-300">تنبيهات الموظفين</span>
+      </div>
+    </div>
+
+
+
+    <div class="flex justify-end items-center mb-4">
+      <button id="addAlertBtn"
+        class="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded-xl flex items-center gap-2 transition-all">
+        <span>+</span>
+        <span>إضافة تنبيه</span>
+      </button>
+    </div>
+
+    <!-- Employee Alerts Table -->
+    <div class="bg-gray-100 dark:bg-gray-950 rounded-2xl shadow p-4 overflow-auto">
+
+
+      <table id="exTable" class="min-w-full text-sm text-right">
+        <thead class="bg-gray-300 dark:bg-gray-800 ">
+          <tr class="text-gray-950 dark:text-gray-100">
+
+            <th class="py-3 px-4">الموظف</th>
+            <th class="py-3 px-4">نوع التنبيه</th>
+            <th class="py-3 px-4">تاريخ الإشعار</th>
+            <th class="py-3 px-4">الرسالة</th>
+          </tr>
+          <tr class="text-gray-950 ">
+            <th class="py-1 px-4">
+              <input onkeyup="filterTable(0, this.value)" placeholder="فلتر الموظف"
+                class="w-40 rounded p-1 text-sm" />
+            </th>
+            <th class="py-1 px-4">
+              <input onkeyup="filterTable(1, this.value)" placeholder="فلتر نوع التنبيه"
+                class="w-40 rounded p-1 text-sm" />
+            </th>
+            <th class="py-1 px-4">
+              <input onkeyup="filterTable(2, this.value)" placeholder="فلتر التاريخ"
+                class="w-40 rounded p-1 text-sm" />
+            </th>
+            <th></th>
+          </tr>
+
+        </thead>
+        <tbody class="text-gray-950 text-center dark:text-gray-100">
+          <tr
+            class="border-b border-gray-300 text-center dark:border-gray-800 hover:bg-gray-600 dark:hover:bg-gray-600 text-gray-950 dark:text-gray-100 hover:text-gray-100">
+
+            <td class="py-2 px-4 font-medium">John Doe</td>
+            <td class="py-2 px-4">Test 1</td>
+            <td class="py-2 px-4" dir="ltr">March 29, 2025, 9:08 a.m.</td>
+            <td class="py-2 px-4">Test</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add Alert Modal -->
+  <div id="addAlertModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div
+      class="bg-white dark:bg-gray-600 p-6 rounded-xl shadow-lg w-full max-w-xl space-y-4 text-right overflow-y-auto max-h-[90vh]">
+      <h3 class="text-lg font-semibold text-center text-blue-700 dark:text-blue-300">
+        + إضافة تنبيه جديد
+      </h3>
+
+      <form id="addAlertForm" class="space-y-4">
+        <!-- Employee Field -->
+        <div class="mb-4">
+          <label for="employee" class="block text-sm text-gray-600 dark:text-gray-100 mb-1">
+            <span class="text-red-500">*</span> الموظف
           </label>
-
-          <div class="relative">
-            <button
-              id="user-menu-btn"
-              class="flex items-center gap-2 text-gray-300 hover:text-blue-400 focus:outline-none"
-            >
-              <svg
-                class="w-10 h-10 text-gray-200 bg-gray-700 rounded-full p-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.29.533 6.121 1.474M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span>admin</span>
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M19 9l-7 7-7-7"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-
-            <div
-              id="user-dropdown"
-              class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-950 rounded-md shadow-lg py-2 text-sm text-gray-800 dark:text-gray-100 hidden z-50 border border-gray-800"
-            >
-              <div
-                class="px-4 py-2 pb-8 font-semibold text-center border-b-2 border-gray-800"
-              >
-                👤 المسؤول
-              </div>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100"
-                >⚙️ الإعدادات</a
-              >
-              <a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-50"
-                >🚪 تسجيل الخروج</a
-              >
-            </div>
+          <div class="flex gap-2">
+            <select id="employee" class="flex-1 p-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-200"
+              required>
+              <option value="">---------</option>
+              <option value="1">John Doe</option>
+              <option value="2">أحمد الشمري</option>
+              <option value="3">سارة العتيبي</option>
+            </select>
           </div>
+
         </div>
-      </header>
 
-      <!-- Breadcrumb Navigation -->
-      <div class="mb-6">
-        <div class="flex items-center space-x-2 space-x-reverse">
-          <a href="#" class="text-blue-500 hover:text-blue-600">الرئيسية</a>
-          <span class="text-gray-500">/</span>
-          <a href="#" class="text-blue-500 hover:text-blue-600">Mangemets</a>
-          <span class="text-gray-500">/</span>
-          <span class="text-gray-700 dark:text-gray-300">تنبيهات الموظفين</span>
+        <!-- Alert Type Field -->
+        <div class="mb-4">
+          <label for="alertType" class="block text-sm text-gray-600 dark:text-gray-100 mb-1">
+            <span class="text-red-500">*</span> نوع التنبيه
+          </label>
+          <input type="text" id="alertType"
+            class="w-full p-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-200" required />
+
         </div>
-      </div>
 
-      <!-- System Alert (Success Message) -->
-      <div id="systemAlert" class="alert-success mb-6">
-        <svg
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M5 13l4 4L19 7"
-          ></path>
-        </svg>
-        <span>تم إضافة تنبيه موظف "Test 1" بنجاح</span>
-        <button
-          class="close-btn"
-          onclick="document.getElementById('systemAlert').style.display='none'"
-        >
-          ×
-        </button>
-      </div>
+        <!-- Message Field -->
+        <div class="mb-4">
+          <label for="message" class="block text-sm text-gray-600 dark:text-gray-100 mb-1">
+            <span class="text-red-500">*</span> الرسالة
+          </label>
+          <textarea id="message" rows="4"
+            class="w-full p-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-200" required></textarea>
 
-      <!-- Search and Filter Controls -->
-      <div class="bg-white dark:bg-gray-950 p-4 rounded-xl shadow mb-6">
-        <div class="flex flex-col md:flex-row gap-4">
-          <div class="flex-1">
-            <input
-              type="text"
-              class="w-full p-2 border rounded-md text-gray-700 dark:text-gray-300 dark:bg-gray-800"
-              placeholder="بحث..."
-            />
-          </div>
-          <div>
-            <button
-              class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 w-full md:w-auto"
-            >
-              بحث
-            </button>
-          </div>
         </div>
-      </div>
 
-      <div class="flex justify-end items-center mb-4">
-        <button
-          id="addAlertBtn"
-          class="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded-xl flex items-center gap-2 transition-all"
-        >
-          <span>+</span>
-          <span>إضافة تنبيه</span>
-        </button>
-      </div>
-
-      <!-- Employee Alerts Table -->
-      <div
-        class="bg-gray-100 dark:bg-gray-950 rounded-2xl shadow p-4 overflow-auto"
-      >
-        <div class="flex items-center mb-4">
-          <select
-            class="p-2 border rounded-md text-gray-700 dark:text-gray-300 dark:bg-gray-800 ml-2"
-          >
-            <option>---------</option>
-          </select>
-
-          <button
-            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-          >
-            Go
+        <!-- Form Buttons -->
+        <div class="flex justify-end gap-3 mt-6">
+          <button type="button" id="cancelBtn"
+            class="px-4 py-2 bg-gray-800 text-gray-100 hover:bg-gray-600 rounded-lg text-sm">
+            إلغاء
           </button>
-
-          <span class="text-gray-600 dark:text-gray-300 mr-2"
-            >0 of 1 selected</span
-          >
+          <button type="submit" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm">
+            حفظ
+          </button>
         </div>
-
-        <table class="min-w-full text-sm text-right">
-          <thead
-            class="bg-gray-300 dark:bg-gray-800 text-gray-950 dark:text-gray-100"
-          >
-            <tr>
-              <th class="py-3 px-4 w-10">
-                <input type="checkbox" class="rounded" />
-              </th>
-              <th class="py-3 px-4">الموظف</th>
-              <th class="py-3 px-4">نوع التنبيه</th>
-              <th class="py-3 px-4">تاريخ الإشعار</th>
-              <th class="py-3 px-4">الرسالة</th>
-            </tr>
-          </thead>
-          <tbody class="text-gray-950 dark:text-gray-100">
-            <tr
-              class="border-b border-gray-300 dark:border-gray-800 hover:bg-gray-600 dark:hover:bg-gray-600 text-gray-950 dark:text-gray-100 hover:text-gray-100"
-            >
-              <td class="py-2 px-4">
-                <input type="checkbox" class="rounded" />
-              </td>
-              <td class="py-2 px-4 font-medium">John Doe</td>
-              <td class="py-2 px-4">Test 1</td>
-              <td class="py-2 px-4">March 29, 2025, 9:08 a.m.</td>
-              <td class="py-2 px-4">Test</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="mt-4 text-sm text-gray-500">تنبيه 1</div>
-      </div>
+      </form>
     </div>
+  </div>
 
-    <!-- Add Alert Modal -->
-    <div
-      id="addAlertModal"
-      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
-    >
-      <div
-        class="bg-white dark:bg-gray-600 p-6 rounded-xl shadow-lg w-full max-w-xl space-y-4 text-right overflow-y-auto max-h-[90vh]"
-      >
-        <h3
-          class="text-lg font-semibold text-center text-blue-700 dark:text-blue-300"
-        >
-          + إضافة تنبيه جديد
-        </h3>
-
-        <form id="addAlertForm" class="space-y-4">
-          <!-- Employee Field -->
-          <div class="mb-4">
-            <label
-              for="employee"
-              class="block text-sm text-gray-600 dark:text-gray-100 mb-1"
-            >
-              <span class="text-red-500">*</span> الموظف
-            </label>
-            <div class="flex gap-2">
-              <select
-                id="employee"
-                class="flex-1 p-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-200"
-              >
-                <option value="">---------</option>
-                <option value="1">John Doe</option>
-                <option value="2">أحمد الشمري</option>
-                <option value="3">سارة العتيبي</option>
-              </select>
-            </div>
-            <div id="employee-error" class="error-message">
-              يرجى اختيار موظف
-            </div>
-          </div>
-
-          <!-- Alert Type Field -->
-          <div class="mb-4">
-            <label
-              for="alertType"
-              class="block text-sm text-gray-600 dark:text-gray-100 mb-1"
-            >
-              <span class="text-red-500">*</span> نوع التنبيه
-            </label>
-            <input
-              type="text"
-              id="alertType"
-              class="w-full p-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-200"
-            />
-            <div id="alertType-error" class="error-message">
-              يرجى إدخال نوع التنبيه
-            </div>
-          </div>
-
-          <!-- Message Field -->
-          <div class="mb-4">
-            <label
-              for="message"
-              class="block text-sm text-gray-600 dark:text-gray-100 mb-1"
-            >
-              <span class="text-red-500">*</span> الرسالة
-            </label>
-            <textarea
-              id="message"
-              rows="4"
-              class="w-full p-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-200"
-            ></textarea>
-            <div id="message-error" class="error-message">
-              يرجى إدخال رسالة التنبيه
-            </div>
-          </div>
-
-          <!-- Form Buttons -->
-          <div class="flex justify-end gap-3 mt-6">
-            <button
-              type="button"
-              id="cancelBtn"
-              class="px-4 py-2 bg-gray-800 text-gray-100 hover:bg-gray-600 rounded-lg text-sm"
-            >
-              إلغاء
-            </button>
-            <button
-              type="submit"
-              class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm"
-            >
-              حفظ
-            </button>
-          </div>
-        </form>
-      </div>
+  <!-- Success Toast -->
+  <div id="successToast"
+    class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg transform transition-transform duration-300 translate-y-20 opacity-0 z-[100]">
+    <div class="flex items-center gap-2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+      </svg>
+      <span id="toastMessage">تمت العملية بنجاح</span>
     </div>
+  </div>
+  <script src="assets/js/template.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script>
+    // =============== UI Interactions ===============
 
-    <!-- Success Toast -->
-    <div
-      id="successToast"
-      class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg transform transition-transform duration-300 translate-y-20 opacity-0 z-[100]"
-    >
-      <div class="flex items-center gap-2">
-        <svg
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M5 13l4 4L19 7"
-          ></path>
-        </svg>
-        <span id="toastMessage">تمت العملية بنجاح</span>
-      </div>
-    </div>
 
-    <script>
-      // =============== UI Interactions ===============
-      // Toggle user dropdown
-      document
-        .getElementById("user-menu-btn")
-        .addEventListener("click", function () {
-          document.getElementById("user-dropdown").classList.toggle("hidden");
-        });
 
-      // Handle mobile menu toggle
-      document
-        .getElementById("menu-toggle")
-        .addEventListener("click", function () {
-          const sidebar = document.getElementById("sidebar");
-          const overlay = document.getElementById("overlay");
 
-          sidebar.classList.toggle("translate-x-full");
-          sidebar.classList.toggle("translate-x-0");
-          overlay.classList.toggle("hidden");
-        });
 
-      // Close menu when clicking overlay
-      document.getElementById("overlay").addEventListener("click", function () {
-        document.getElementById("sidebar").classList.add("translate-x-full");
-        document.getElementById("sidebar").classList.remove("translate-x-0");
-        this.classList.add("hidden");
+    // =============== Toast Notification ===============
+    function showToast(message) {
+      const toast = document.getElementById("successToast");
+      document.getElementById("toastMessage").textContent = message;
+
+      // Show toast
+      toast.classList.remove("translate-y-20", "opacity-0");
+      toast.classList.add("translate-y-0", "opacity-100");
+
+      // Hide toast after 3 seconds
+      setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+        toast.classList.remove("translate-y-0", "opacity-100");
+      }, 3000);
+    }
+
+    // Modal handling
+    document
+      .getElementById("addAlertBtn")
+      .addEventListener("click", function () {
+        document.getElementById("addAlertModal").classList.remove("hidden");
+        document.getElementById("addAlertModal").classList.add("flex");
       });
 
-      // =============== Toast Notification ===============
-      function showToast(message) {
-        const toast = document.getElementById("successToast");
-        document.getElementById("toastMessage").textContent = message;
+    document
+      .getElementById("cancelBtn")
+      .addEventListener("click", function () {
+        document.getElementById("addAlertModal").classList.add("hidden");
+        document.getElementById("addAlertModal").classList.remove("flex");
+      });
 
-        // Show toast
-        toast.classList.remove("translate-y-20", "opacity-0");
-        toast.classList.add("translate-y-0", "opacity-100");
+    // Form submission
+    document
+      .getElementById("addAlertForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
 
-        // Hide toast after 3 seconds
-        setTimeout(() => {
-          toast.classList.add("translate-y-20", "opacity-0");
-          toast.classList.remove("translate-y-0", "opacity-100");
-        }, 3000);
-      }
+        // Get values
+        const employee = document.getElementById("employee");
+        const employeeName = employee.options[employee.selectedIndex].text;
+        const alertType = document.getElementById("alertType").value;
+        const message = document.getElementById("message").value;
 
-      // Modal handling
-      document
-        .getElementById("addAlertBtn")
-        .addEventListener("click", function () {
-          document.getElementById("addAlertModal").classList.remove("hidden");
-          document.getElementById("addAlertModal").classList.add("flex");
-        });
-
-      document
-        .getElementById("cancelBtn")
-        .addEventListener("click", function () {
-          document.getElementById("addAlertModal").classList.add("hidden");
-          document.getElementById("addAlertModal").classList.remove("flex");
-        });
-
-      // Form submission
-      document
-        .getElementById("addAlertForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // Get values
-          const employee = document.getElementById("employee");
-          const employeeName = employee.options[employee.selectedIndex].text;
-          const alertType = document.getElementById("alertType").value;
-          const message = document.getElementById("message").value;
-
-          // Perform validation (simplified for this example)
-          if (!employee.value || !alertType || !message) {
-            if (!employee.value) {
-              document.getElementById("employee-error").style.display = "block";
-            }
-            if (!alertType) {
-              document.getElementById("alertType-error").style.display =
-                "block";
-            }
-            if (!message) {
-              document.getElementById("message-error").style.display = "block";
-            }
-            return;
+        // Perform validation (simplified for this example)
+        if (!employee.value || !alertType || !message) {
+          if (!employee.value) {
+            document.getElementById("employee-error").style.display = "block";
           }
-
-          // Close modal
-          document.getElementById("addAlertModal").classList.add("hidden");
-          document.getElementById("addAlertModal").classList.remove("flex");
-
-          // Show success message
-          showToast("تم إضافة التنبيه بنجاح");
-        });
-
-      // Initialize the page
-      document.addEventListener("DOMContentLoaded", function () {
-        // Set up theme toggle
-        const themeToggle = document.getElementById("theme-toggle");
-        if (themeToggle) {
-          // Check if dark mode is stored in local storage
-          if (localStorage.getItem("darkMode") === "true") {
-            document.documentElement.classList.add("dark");
-            themeToggle.checked = true;
+          if (!alertType) {
+            document.getElementById("alertType-error").style.display =
+              "block";
           }
-
-          // Toggle dark mode
-          themeToggle.addEventListener("change", function () {
-            if (this.checked) {
-              document.documentElement.classList.add("dark");
-              localStorage.setItem("darkMode", "true");
-            } else {
-              document.documentElement.classList.remove("dark");
-              localStorage.setItem("darkMode", "false");
-            }
-          });
+          if (!message) {
+            document.getElementById("message-error").style.display = "block";
+          }
+          return;
         }
+
+        // Close modal
+        document.getElementById("addAlertModal").classList.add("hidden");
+        document.getElementById("addAlertModal").classList.remove("flex");
+
+        // Show success message
+        showToast("تم إضافة التنبيه بنجاح");
       });
-    </script>
-  </body>
+
+
+  </script>
+
+
+</body>
+
 </html>
