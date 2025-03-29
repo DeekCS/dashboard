@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الموظفين</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body
+    class="bg-gradient-to-br from-gray-300 to-gray-200 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white font-[Tajawal] min-h-screen">
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 lg:hidden"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar"
+        class="group fixed top-4 right-1 h-[95vh] bg-white dark:bg-gray-950 shadow-xl border border-gray-600  p-3 space-y-8 z-50 rounded-3xl transition-all duration-300 overflow-hidden w-[80px] hover:w-60 translate-x-full lg:translate-x-0">
+    
+        <div class="flex items-center gap-4">
+            <img src="assets/images/logo.svg" alt="شعار النظام" class="w-14 shrink-0 bg-gray-950" />
+            <span
+                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-gray-950 dark:text-gray-100 font-mono tracking-widest text-lg drop-shadow-[0_0_5px_#7ed957]">
+                CYBER CELL
+            </span>
+    
+        </div>
+    
+        <nav class="space-y-8 text-gray-950 dark:text-gray-100 text-base">
+            <a href="Dashboard.html" class="flex items-center gap-2  hover:text-blue-400">
+                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h7v7H3V3zm0 11h7v7H3v-7zm11-11h7v13h-7V3z" />
+                </svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    لوحة التحكم
+                </span>
+            </a>
+    
+            <a href="employee.html" class="flex items-center gap-2 text-white bg-blue-600 rounded-xl p-2">
+                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-blue-500 rounded-full p-2" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M16 3.13a4 4 0 010 7.75M8 3.13a4 4 0 000 7.75" />
+                </svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    الموظفين
+                </span>
+            </a>
+    
+            <a href="devices.html" class="flex items-center gap-2 hover:text-blue-400">
+                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17h4.5M4 6h16v10H4V6z" />
+                </svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    الأجهزة
+                </span>
+            </a>
+    
+            <a href="#" class="flex items-center gap-2 hover:text-blue-400">
+                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v2m0 4h.01M5.07 17H18.93a2 2 0 001.84-2.75L13.84 4.25a2 2 0 00-3.68 0L3.23 14.25A2 2 0 005.07 17z" />
+                </svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    التنبيهات
+                </span>
+            </a>
+    
+            <a href="Dashboard.html" class="flex items-center gap-2  hover:text-blue-400">
+                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 14h6m2 0a2 2 0 100-4H7a2 2 0 100 4h10zM9 10h6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    الفواتير
+                </span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="lg:pr-36 p-6">
+        <!-- Header -->
+        <header class="bg-white dark:bg-gray-950 shadow rounded-2xl mb-6 p-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <!-- Hamburger -->
+                <button id="menu-toggle" class="lg:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <h1 class="text-2xl  font-bold">الموظفين</h1>
+            </div>
+
+            <!-- User Dropdown -->
+            <div class="d-flex flex gap-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input class="sr-only peer" value="" type="checkbox" id="theme-toggle" />
+                    <div
+                        class="w-14 h-7 rounded-full ring-0 peer duration-500 outline-none bg-gray-200 overflow-hidden before:flex before:items-center before:justify-center after:flex after:items-center after:justify-center before:content-['☀️'] before:absolute before:h-5 before:w-5 before:top-1/2 before:bg-white before:rounded-full before:left-1 before:-translate-y-1/2 before:transition-all before:duration-700 peer-checked:before:opacity-0 peer-checked:before:rotate-90 peer-checked:before:-translate-y-full  peer-checked:bg-[#383838] after:content-['🌑'] after:absolute after:bg-[#1d1d1d] after:rounded-full after:top-[8px] after:right-1 after:translate-y-full after:w-5 after:h-5 after:opacity-0 after:transition-all after:duration-700 peer-checked:after:opacity-100 peer-checked:after:rotate-180 peer-checked:after:translate-y-0">
+                    </div>
+                </label>
+
+
+
+                <div class="relative">
+                    <button id="user-menu-btn"
+                        class="flex items-center gap-2 text-gray-300 hover:text-blue-400 focus:outline-none">
+                        <svg class="w-10 h-10 text-gray-200 bg-gray-700 rounded-full p-2" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.29.533 6.121 1.474M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                    <div id="user-dropdown"
+                        class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-950 rounded-md shadow-lg py-2 text-sm text-gray-800 dark:text-gray-100 hidden z-50 border border-gray-800">
+                        <div class="px-4 py-2 pb-8 font-semibold text-center border-b-2 border-gray-800">👤 المسؤول
+                        </div>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">⚙️ الإعدادات</a>
+                        <a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-50">🚪 تسجيل الخروج</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Employee List Table -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-semibold">👥 قائمة الموظفين</h2>
+            <button onclick="openAddModal()"
+                class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-xl transition-all">
+                + إضافة موظف
+            </button>
+
+        </div>
+
+        <!-- جدول الموظفين -->
+        <div class="bg-gray-100 dark:bg-gray-950 rounded-2xl shadow p-4 overflow-auto">
+            <table class="min-w-full text-sm text-right">
+                <thead class="bg-gray-300 dark:bg-gray-800 text-gray-950 dark:text-gray-100 ">
+                    <tr>
+                        <th class="py-3 px-4">الاسم</th>
+                        <th class="py-3 px-4">القسم</th>
+                        <th class="py-3 px-4">عدد الأجهزة</th>
+                        <th class="py-3 px-4"> الأجهزة</th>
+                        <th class="py-3 px-4">الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-950 dark:text-gray-100">
+
+                    <!-- موظف 1 -->
+                    <tr class="border-b border-gray-300 dark:border-gray-800 hover:bg-gray-600 dark:hover:bg-gray-600 text-gray-950 dark:text-gray-100 hover:text-gray-100">
+                        <td class="py-2 px-4 font-medium">أحمد الشمري</td>
+                        <td class="py-2 px-4">تقنية المعلومات</td>
+                        <td class="py-2 px-4">2</td>
+                        <td class="py-2 px-4 text-blue-400 hover:text-blue-100  transition-all duration-300  cursor-pointer"
+                            onclick="showDevices(['جهاز لابتوب HP', 'هاتف iPhone 13'], 'أحمد الشمري')">عرض</td>
+                        <td class="py-2 px-4 flex gap-2 ">
+                            <button class="text-blue-500 hover:text-blue-700" title="تعديل"
+                                onclick="openEditModal('أحمد الشمري', 'تقنية المعلومات', ['لابتوب HP', 'iPhone 13'])">
+                                <!-- Heroicon: Pencil -->
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
+                                </svg>
+                            </button>
+
+                            <button onclick="openModal('أحمد الشمري')" class="text-red-500 hover:text-red-700"
+                                title="حذف">
+                                <!-- Heroicon: Trash -->
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <!-- موظف 2 -->
+                    <tr
+                        class="border-b border-gray-300 dark:border-gray-800 hover:bg-gray-600 dark:hover:bg-gray-600 text-gray-950 dark:text-gray-100 hover:text-gray-100">
+                        <td class="py-2 px-4 font-medium">سارة العتيبي</td>
+                        <td class="py-2 px-4">الموارد البشرية</td>
+                        <td class="py-2 px-4">1</td>
+                        <td class="py-2 px-4 text-blue-400 hover:text-blue-100  transition-all duration-300  cursor-pointer"
+                            onclick="showDevices(['جهاز لابتوب HP', 'هاتف iPhone 13'], 'سارة العتيبي')">عرض</td>
+                        <td class="py-2 px-4 flex gap-2 ">
+                            <button class="text-blue-500 hover:text-blue-700" title="تعديل"
+                                onclick="openEditModal('سارة العتيبي', 'الموارد البشرية', ['لابتوب HP', 'iPhone 13'])">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
+                                </svg>
+                            </button>
+                            <button onclick="openModal('سارة العتيبي')" class="text-red-500 hover:text-red-700"
+                                title="حذف">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <!-- موظف بدون أجهزة -->
+                    <tr
+                        class="border-b border-gray-300 dark:border-gray-800 hover:bg-gray-600 dark:hover:bg-gray-600 text-gray-950 dark:text-gray-100 hover:text-gray-100">
+                        <td class="py-2 px-4 font-medium">محمد الزهراني</td>
+                        <td class="py-2 px-4">الإدارة المالية</td>
+                        <td class="py-2 px-4 text-red-600 font-bold">0</td>
+                        <td class="py-2 px-4 text-blue-400 hover:text-blue-100  transition-all duration-300  cursor-pointer"
+                            onclick="showDevices(['جهاز لابتوب HP', 'هاتف iPhone 13'], 'محمد الزهراني')">عرض</td>
+                        <td class="py-2 px-4 flex gap-2 ">
+                            <button class="text-blue-500 hover:text-blue-700" title="تعديل">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2l-6 6m-1 4h4M4 21h16" />
+                                </svg>
+                            </button>
+                            <button onclick="openModal('محمد الزهراني')" class="text-red-500 hover:text-red-700"
+                                title="حذف">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a2 2 0 00-2-2H9a2 2 0 00-2 2" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal تأكيد الحذف -->
+        <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-gray-100 dark:bg-gray-600 p-6 rounded-xl shadow-lg max-w-sm w-full text-center space-y-4">
+                <h3 class="text-lg font-bold text-red-500">تأكيد الحذف</h3>
+                <p class="text-gray-950 dark:text-gray-100">هل أنت متأكد من حذف <span id="employeeName"
+                        class="font-bold text-gray-800 dark:text-red-500"></span>؟</p>
+                <div class="flex justify-center gap-4 mt-4">
+                    <button onclick="closeModal()"
+                        class="px-4 py-2 text-gray-100  bg-gray-800 hover:bg-gray-500 rounded-lg text-sm">إلغاء</button>
+                    <button class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm">نعم،
+                        احذف</button>
+                </div>
+            </div>
+        </div>
+        <!-- اظهار اجهزة الموظف -->
+        <div id="devicesModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-gray-100 dark:bg-gray-600 p-6 rounded-xl shadow-lg max-w-md w-full text-center space-y-4">
+                <h3 class="text-lg font-semibold text-blue-300">📱 أجهزة <span id="deviceEmployeeName"></span></h3>
+                <ul id="devicesList" class="text-right text-sm text-gray-700 dark:text-gray-100 space-y-1"></ul>
+                <button onclick="closeDevicesModal()"
+                    class="mt-4 px-4 py-2 bg-gray-800 text-gray-100 hover:bg-gray-500 rounded-lg text-sm">إغلاق</button>
+            </div>
+        </div>
+        <!-- تعديل بيانات الموظف -->
+        <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-gray-100 dark:bg-gray-600 p-6 rounded-xl shadow-lg w-full max-w-lg space-y-4 text-right">
+
+                <h3 class="text-lg font-semibold text-center text-blue-300">✏️ تعديل بيانات الموظف</h3>
+
+                <form onsubmit="event.preventDefault(); submitEditForm();">
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">الاسم</label>
+                            <input id="editName" type="text" class="w-full p-2 text-gray-900 border rounded-lg" />
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">القسم</label>
+                            <input id="editDepartment" type="text" class="w-full text-gray-900  p-2 border rounded-lg" />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">📱 الأجهزة الحالية</label>
+                            <ul id="currentDevices" class="text-sm text-gray-700 space-y-1 bg-gray-100 p-2 rounded">
+                            </ul>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-600 mb-1">➕ إضافة جهاز</label>
+                            <div class="flex gap-2">
+                                <input id="newDevice" type="text" placeholder="اسم الجهاز"
+                                    class="flex-1 p-2 border text-gray-700 rounded-lg" />
+                                <button type="button" onclick="addDeviceToList()"
+                                    class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm">
+                                    إضافة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-end gap-3">
+                        <button type="button" onclick="closeEditModal()"
+                            class="px-4 py-2 bg-gray-800 text-gray-100 hover:bg-gray-500 rounded-lg text-sm">إلغاء</button>
+                        <button type="submit"
+                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm">حفظ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- اضافة موظف جديد  -->
+        <div id="addModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-gray-100 dark:bg-gray-600 p-6 rounded-xl shadow-lg w-full max-w-lg space-y-4 text-right">
+
+                <h3 class="text-lg font-semibold text-center text-blue-300">➕ إضافة موظف جديد</h3>
+
+                <form onsubmit="event.preventDefault(); submitAddForm();">
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">الاسم</label>
+                            <input id="addName" type="text" class="w-full p-2 text-gray-900 border rounded-lg" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">القسم</label>
+                            <input id="addDepartment" type="text" class="w-full p-2 text-gray-900 border rounded-lg" required />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-100 mb-1">📱 أجهزة الموظف (اختياري)</label>
+                            <input id="addDevices" type="text" placeholder="افصل بين الأجهزة بفاصلة"
+                                class="w-full p-2 border rounded-lg text-gray-900" />
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-end gap-3">
+                        <button type="button" onclick="closeAddModal()"
+                            class="px-4 py-2 bg-gray-800 text-gray-100 hover:bg-gray-600 rounded-lg text-sm">إلغاء</button>
+                        <button type="submit"
+                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm">حفظ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="assets/js/template.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script>
+        function openModal(name) {
+            document.getElementById('employeeName').innerText = name;
+            document.getElementById('deleteModal').classList.remove('hidden');
+            document.getElementById('deleteModal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+            document.getElementById('deleteModal').classList.remove('flex');
+        }
+    </script>
+    <script>
+        function showDevices(devices, employeeName) {
+            document.getElementById('deviceEmployeeName').textContent = employeeName;
+
+            const list = document.getElementById('devicesList');
+            list.innerHTML = '';
+
+            if (devices.length === 0) {
+                list.innerHTML = '<li>لا توجد أجهزة مسجلة.</li>';
+            } else {
+                devices.forEach(device => {
+                    const li = document.createElement('li');
+                    li.textContent = '🔹 ' + device;
+                    list.appendChild(li);
+                });
+            }
+
+            const modal = document.getElementById('devicesModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeDevicesModal() {
+            const modal = document.getElementById('devicesModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    </script>
+
+    <script>
+        let currentEditDevices = [];
+
+        function openEditModal(name, department, devices) {
+            document.getElementById('editName').value = name;
+            document.getElementById('editDepartment').value = department;
+            currentEditDevices = [...devices];
+            renderDeviceList();
+
+            const modal = document.getElementById('editModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeEditModal() {
+            const modal = document.getElementById('editModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function addDeviceToList() {
+            const input = document.getElementById('newDevice');
+            const deviceName = input.value.trim();
+            if (deviceName) {
+                currentEditDevices.push(deviceName);
+                input.value = '';
+                renderDeviceList();
+            }
+        }
+
+        function renderDeviceList() {
+            const list = document.getElementById('currentDevices');
+            list.innerHTML = '';
+            if (currentEditDevices.length === 0) {
+                list.innerHTML = '<li class="text-gray-500">لا توجد أجهزة بعد.</li>';
+            } else {
+                currentEditDevices.forEach((device, index) => {
+                    const li = document.createElement('li');
+                    li.className = "flex justify-between items-center bg-white p-2 rounded shadow-sm";
+                    li.innerHTML = `
+                        ${device}
+                        <button class="text-red-500 text-xs hover:underline" onclick="removeDevice(${index})">حذف</button>
+                    `;
+                    list.appendChild(li);
+                });
+            }
+        }
+
+        function removeDevice(index) {
+            currentEditDevices.splice(index, 1);
+            renderDeviceList();
+        }
+
+        function submitEditForm() {
+            const name = document.getElementById('editName').value;
+            const department = document.getElementById('editDepartment').value;
+
+            // 👇 هنا ممكن ترسل البيانات إلى API أو تطبعها
+            console.log("✅ تم التعديل:", name, department, currentEditDevices);
+
+            closeEditModal();
+        }
+    </script>
+    <script>
+        function openAddModal() {
+            document.getElementById('addModal').classList.remove('hidden');
+            document.getElementById('addModal').classList.add('flex');
+        }
+
+        function closeAddModal() {
+            document.getElementById('addModal').classList.add('hidden');
+            document.getElementById('addModal').classList.remove('flex');
+        }
+
+        function submitAddForm() {
+            const name = document.getElementById('addName').value;
+            const department = document.getElementById('addDepartment').value;
+            const devicesString = document.getElementById('addDevices').value;
+            const devices = devicesString
+                ? devicesString.split(',').map(d => d.trim()).filter(d => d !== '')
+                : [];
+
+            // 👇 هنا تقدر تتعامل مع البيانات - send to backend or update UI
+            console.log("📥 موظف جديد:", name, department, devices);
+
+            // Reset form (اختياري)
+            document.getElementById('addName').value = '';
+            document.getElementById('addDepartment').value = '';
+            document.getElementById('addDevices').value = '';
+
+            closeAddModal();
+        }
+    </script>
+
+
+</body>
+
+</html>

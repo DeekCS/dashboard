@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة التحكم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="assets/js/tailwind.js"></script>
+
+    <style>
+        body {
+            transition: background-color 1s, color 0.3s;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gradient-to-br from-gray-200 to-gray-200 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white font-[Tajawal] min-h-screen">
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 lg:hidden"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar"
+        class="group fixed top-4 right-1 h-[95vh] bg-white dark:bg-gray-950 shadow-xl border border-gray-600  p-3 space-y-8 z-50 rounded-3xl transition-all duration-300 overflow-hidden w-[80px] hover:w-60 translate-x-full lg:translate-x-0">
+
+        <div class="flex items-center gap-4">
+            <img src="assets/images/logo.svg" alt="شعار النظام" class="w-14 shrink-0 bg-gray-950" />
+            <span
+                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-gray-950 dark:text-gray-100 font-mono tracking-widest text-lg drop-shadow-[0_0_5px_#7ed957]">
+                CYBER CELL
+            </span>
+
+        </div>
+
+        <nav class="space-y-8 text-gray-950 dark:text-gray-100 text-base">
+            <a href="Dashboard.html" class="flex items-center gap-2 text-white bg-blue-600 rounded-xl p-2">
+                <svg class="w-10 h-10 text-white shrink-0 bg-blue-500 rounded-full p-2" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h7v7H3V3zm0 11h7v7H3v-7zm11-11h7v13h-7V3z" />
+                </svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    لوحة التحكم
+                </span>
+            </a>
+
+            <a href="employee.html" class="flex items-center gap-2 hover:text-blue-400">
+                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M16 3.13a4 4 0 010 7.75M8 3.13a4 4 0 000 7.75" />
+                </svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    الموظفين
+                </span>
+            </a>
+
+            <a href="devices.html" class="flex items-center gap-2 hover:text-blue-400">
+                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9.75 17h4.5M4 6h16v10H4V6z" />
+                </svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    الأجهزة
+                </span>
+            </a>
+
+            <a href="#" class="flex items-center gap-2 hover:text-blue-400">
+                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v2m0 4h.01M5.07 17H18.93a2 2 0 001.84-2.75L13.84 4.25a2 2 0 00-3.68 0L3.23 14.25A2 2 0 005.07 17z" />
+                </svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    التنبيهات
+                </span>
+            </a>
+
+            <a href="invoices.html" class="flex items-center gap-2 hover:text-blue-400">
+                <svg class="w-10 h-10 text-gray-200 shrink-0 bg-gray-700 rounded-full p-2" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 14h6m2 0a2 2 0 100-4H7a2 2 0 100 4h10zM9 10h6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    الفواتير
+                </span>
+            </a>
+        </nav>
+    </aside>
+
+    <div class="lg:pr-32 p-6">
+        <header class="bg-white dark:bg-gray-950 shadow rounded-2xl mb-6 p-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <button id="menu-toggle" class="lg:hidden text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <h1 class="text-2xl font-bold">⚙️ لوحة التحكم</h1>
+            </div>
+            <div class="d-flex flex gap-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input class="sr-only peer" value="" type="checkbox" id="theme-toggle" />
+                    <div
+                        class="w-14 h-7 rounded-full ring-0 peer duration-500 outline-none bg-gray-200 overflow-hidden before:flex before:items-center before:justify-center after:flex after:items-center after:justify-center before:content-['☀️'] before:absolute before:h-5 before:w-5 before:top-1/2 before:bg-white before:rounded-full before:left-1 before:-translate-y-1/2 before:transition-all before:duration-700 peer-checked:before:opacity-0 peer-checked:before:rotate-90 peer-checked:before:-translate-y-full  peer-checked:bg-[#383838] after:content-['🌑'] after:absolute after:bg-[#1d1d1d] after:rounded-full after:top-[8px] after:right-1 after:translate-y-full after:w-5 after:h-5 after:opacity-0 after:transition-all after:duration-700 peer-checked:after:opacity-100 peer-checked:after:rotate-180 peer-checked:after:translate-y-0">
+                    </div>
+                </label>
+
+
+
+                <div class="relative">
+                    <button id="user-menu-btn"
+                        class="flex items-center gap-2 text-gray-300 hover:text-blue-400 focus:outline-none">
+                        <svg class="w-10 h-10 text-gray-200 bg-gray-700 rounded-full p-2" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.29.533 6.121 1.474M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                    <div id="user-dropdown"
+                        class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-950 rounded-md shadow-lg py-2 text-sm text-gray-800 dark:text-gray-100 hidden z-50 border border-gray-800">
+                        <div class="px-4 py-2 pb-8 font-semibold text-center border-b-2 border-gray-800">👤 المسؤول
+                        </div>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">⚙️ الإعدادات</a>
+                        <a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-50">🚪 تسجيل الخروج</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white dark:bg-gray-950 rounded-2xl shadow p-4 flex items-center gap-4">
+                <div class="bg-blue-700 p-2 rounded-full">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 30">
+                        <path d="M17 20h5v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2h5" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-gray-800  font-bold dark:text-gray-100 text-sm">عدد الموظفين الذين استلموا الأجهزة
+                    </p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-100">35</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-950 rounded-2xl shadow p-4 flex items-center gap-4">
+                <div class="bg-green-500 p-2 rounded-full">
+                    <svg class="w-6 h-6 text-gray-100 dark:text-gray-100" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path d="M9 12h6m2 0a2 2 0 100-4H7a2 2 0 100 4h10z" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-gray-800  font-bold dark:text-gray-100 text-sm">عدد الأجهزة المستلمة</p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-100">50</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-950 rounded-2xl shadow p-4 flex items-center gap-4">
+                <div class="bg-yellow-500 p-2 rounded-full">
+                    <svg class="w-6 h-6 text-gray-950 dark:text-gray-950" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path d="M13 16h-1v-4h-1m1-4h.01" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-gray-800  font-bold dark:text-gray-100 text-sm">التنبيهات الحديثة</p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-100">3</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-950 rounded-2xl shadow p-4 flex items-center gap-4">
+                <div class="bg-red-500 p-2 rounded-full">
+                    <svg class="w-6 h-6 text-gray-100 dark:text-gray-100" fill="none" stroke="currentColor"
+                        viewBox="0 0 25 20">
+                        <path d="M17 9V7a4 4 0 10-8 0v2m-2 4h12m-6 4h.01" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-gray-800  font-bold dark:text-gray-100 text-sm">آخر الفواتير</p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-100">5</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white dark:bg-gray-950 rounded-2xl shadow p-4">
+                <h2 class="text-xl font-semibold mb-4">🛎️ التنبيهات الحديثة</h2>
+                <ul class="space-y-2 text-sm pt-5 text-gray-950 dark:text-gray-100">
+                    <li>🔔 الجهاز SN123 تم تسليمه بدون تسجيل.</li>
+                    <li>💰 فاتورة رقم 124 غير مدفوعة.</li>
+                    <li>⚠️ الجهاز SN456 تم تسليمه لموظف غير مفعل.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white dark:bg-gray-950 rounded-2xl shadow p-4">
+                <h2 class="text-xl font-semibold mb-4">🧾 آخر الفواتير</h2>
+                <table class="w-full text-sm text-right text-gray-950 dark:text-gray-100">
+                    <thead>
+                        <tr class="text-gray-950 dark:text-gray-100 border-b border-gray-600">
+                            <th class="py-2">رقم الفاتورة</th>
+                            <th class="py-2">التاريخ</th>
+                            <th class="py-2">القيمة</th>
+                            <th class="py-2">الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-800 ">
+                            <td class="py-2">#123</td>
+                            <td class="py-2">2025-03-20</td>
+                            <td class="py-2">150 د.أ</td>
+                            <td class="py-2 text-green-600 dark:text-green-400">مدفوعة</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-2">#124</td>
+                            <td class="py-2">2025-03-21</td>
+                            <td class="py-2">220 د.أ</td>
+                            <td class="py-2 text-red-600 dark:text-red-400">غير مدفوعة</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/template.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
